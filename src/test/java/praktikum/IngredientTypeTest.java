@@ -9,7 +9,7 @@ import static praktikum.IngredientType.SAUCE;
 public class IngredientTypeTest {
 
     @Test
-    public void values() {
+    public void shouldCheckCorrectValues() {
         IngredientType[] expectedList = {SAUCE, FILLING};
         assertArrayEquals("Значения типов не совпадают", expectedList, IngredientType.values());
     }
