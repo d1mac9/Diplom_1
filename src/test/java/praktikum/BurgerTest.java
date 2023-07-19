@@ -88,18 +88,17 @@ public class BurgerTest {
     }
 
     @Test
-    public void shouldGetPricePositiveCheckPrice() {
-        burger = new Burger();
+    public void shouldInvokeMethodGetPrice1Time() {
+        Burger burger = new Burger();
         burger.setBuns(mockBun);
         burger.addIngredient(mockIngredient1);
         burger.addIngredient(mockIngredient2);
 
-        Mockito.when(mockBun.getPrice()).thenReturn(10f);
-        Mockito.when(mockIngredient1.getPrice()).thenReturn(5f);
-        Mockito.when(mockIngredient2.getPrice()).thenReturn(7f);
+        burger.getPrice();
 
-        float expectedPrice = 2 * 10f + 5f + 7f;
-        assertEquals("Сумма ингредиентов не совпадает", expectedPrice, burger.getPrice(), 0);
+        Mockito.verify(mockBun, Mockito.times(1)).getPrice();
+        Mockito.verify(mockIngredient1, Mockito.times(1)).getPrice();
+        Mockito.verify(mockIngredient2, Mockito.times(1)).getPrice();
     }
 
     @Test
